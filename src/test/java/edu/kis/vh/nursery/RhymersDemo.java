@@ -1,7 +1,6 @@
 package edu.kis.vh.nursery;
 
-import edu.kis.vh.nursery.factory.DefaultRhymersFactory;
-import edu.kis.vh.nursery.factory.Rhymersfactory;
+import edu.kis.vh.nursery.factory.RhymersFactory;
 
 class RhymersDemo {
     public static final int BOUND = 20;
@@ -12,13 +11,13 @@ class RhymersDemo {
     public static final int FIFO_RHYMER_IDX = 3;
 
     public static void main(String[] args) {
-        Rhymersfactory factory = new DefaultRhymersFactory();
+        RhymersFactory factory = new DefaultRhymersFactory();
 
         testRhymers(factory);
 
     }
 
-    private static void testRhymers(Rhymersfactory factory) {
+    private static void testRhymers(RhymersFactory factory) {
         DefaultCountingOutRhymer[] rhymers = { factory.GetStandardRhymer(), factory.GetFalseRhymer(),
                 factory.GetFIFORhymer(), factory.GetHanoiRhymer()};
 
@@ -38,6 +37,30 @@ class RhymersDemo {
 
         System.out.println("total rejected is "
                 + ((HanoiRhymer) rhymers[FIFO_RHYMER_IDX]).reportRejected());
+    }
+
+}
+
+class DefaultRhymersFactory implements RhymersFactory {
+
+    @Override
+    public DefaultCountingOutRhymer GetStandardRhymer() {
+        return new DefaultCountingOutRhymer();
+    }
+
+    @Override
+    public DefaultCountingOutRhymer GetFalseRhymer() {
+        return new DefaultCountingOutRhymer();
+    }
+
+    @Override
+    public DefaultCountingOutRhymer GetFIFORhymer() {
+        return new FifoRhymer();
+    }
+
+    @Override
+    public DefaultCountingOutRhymer GetHanoiRhymer() {
+        return new HanoiRhymer();
     }
 
 }
