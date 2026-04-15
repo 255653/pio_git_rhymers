@@ -22,7 +22,7 @@ public class FifoRhymerTest {
     public void testCountOutEmpty() {
         FifoRhymer rhymer = new FifoRhymer();
         final int EMPTY_STACK_VALUE = -1;
-        
+
         Assert.assertEquals(EMPTY_STACK_VALUE, rhymer.countOut());
     }
 }
