@@ -8,8 +8,9 @@ package edu.kis.vh.nursery;
 
 public class HanoiRhymer extends DefaultCountingOutRhymer {
 
-    int totalRejected = 0;
+    private int totalRejected = 0;
 
+docs
     /**
      * Zwraca całkowitą liczbę elementów, które zostały odrzucone podczas prób dodania ich do stosu.
      *
@@ -17,6 +18,8 @@ public class HanoiRhymer extends DefaultCountingOutRhymer {
      */
 
     public int reportRejected() {
+    protected int reportRejected() {
+master
         return totalRejected;
     }
 
@@ -28,7 +31,7 @@ public class HanoiRhymer extends DefaultCountingOutRhymer {
      * @param in wartość liczbowa, która ma zostać dodana do stosu
      */
     @Override
-    public void countIn(int in) {
+    protected void countIn(int in) {
         if (!callCheck() && in > peekABoo())
             totalRejected++;
         else

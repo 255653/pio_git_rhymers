@@ -7,18 +7,25 @@ public class DefaultCountingOutRhymer {
     private static final int LAST_INDEX = CAPACITY - 1;
     private final int[] numbers = new int[CAPACITY];
 
+docs
+
+    public int getTotal() {
+        return total;
+    }
+
+master
     private int total = EMPTY_INDEX;
 
-    public void countIn(int in) {
+    protected void countIn(int in) {
         if (!isFull())
             numbers[++total] = in;
     }
 
-    public boolean callCheck() {
+    protected boolean callCheck() {
         return total == EMPTY_INDEX;
     }
 
-    public boolean isFull() {
+    protected boolean isFull() {
         return total == LAST_INDEX;
     }
 
